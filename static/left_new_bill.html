@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Left</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<img class="screen" usemap="#menu" src="images/screen_bill.PNG">
+
+<div class="contacts">
+    <input id="contact-input" type="text" size="14" class="form-control"/>
+</div>
+<div class="amount">
+    <input type="text" size="5"/>
+</div>
+
+<map name="menu">
+    <area shape="rect" coords="0, 0, 263, 60" href="left_start.html">
+    <area shape="rect" coords="41, 411, 239, 454" href="left_bill_sent.html">
+</map>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/typeahead.jquery.js"></script>
+<script>
+
+    var substringMatcher = function (strs) {
+        return function findMatches(q, cb) {
+            var matches, substringRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function (i, object) {
+                if (substrRegex.test(object.name)) {
+                    matches.push(object);
+                }
+            });
+
+            cb(matches);
+        };
+    };
+
+    var contacts = [
+        {'name': "Katrin Meier", 'img': "images/angel.png", 'rating': "Angel"},
+        {'name': "Karim", 'img': "images/angel.png", 'rating': "Another Angel"}
+    ];
+
+    $(document).ready(function () {
+
+        $('#contact-input').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+            name: 'contacts',
+            display: 'name',
+            source: substringMatcher(contacts),
+            templates: {
+                empty: [
+                    '<div class="contact-card">',
+                    'Unable to find any contact',
+                    '</div>'
+                ].join('\n'),
+                suggestion: function (data) {
+                    return '<div class="contact-card"><img class="card-avatar" src="' + data.img + '"><div class="card-info-holder"><p class="card-name">' + data.name + '</p> <p class="card-rating">' + data.rating + '</p></div></div>';
+                }
+
+            }
+        });
+
+        $("#contact-input").bind("typeahead:select", function (ev, suggestion) {
+            $("#info").text(suggestion.year);
+        });
+    });
+</script>
+</body>
+</html>
