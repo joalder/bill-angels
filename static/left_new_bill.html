@@ -47,8 +47,9 @@
     };
 
     var contacts = [
-        {'name': "Katrin Meier", 'img': "images/angel.png", 'rating': "Angel"},
-        {'name': "Karim", 'img': "images/angel.png", 'rating': "Another Angel"}
+        {'name': "Martina Keller", 'img': "images/angel_grey.png", 'street': "Kesselweg 7", 'city': "8610 Uster", 'rating': "Angel"},
+        {'name': "Roy Müller", 'img': "images/angel_grey.png", 'street': "Bahnhofstrasse 34", 'city': "8001 Zürich", 'rating': "Another Angel"},
+        {'name': "Heinz Bach", 'img': "images/angel_grey.png", 'street': "Weizenstrasse 18", 'city': "5430 Wettingen", 'rating': "Another Angel"}
     ];
 
     $(document).ready(function () {
@@ -68,7 +69,7 @@
                     '</div>'
                 ].join('\n'),
                 suggestion: function (data) {
-                    return '<div class="contact-card"><img class="card-avatar" src="' + data.img + '"><div class="card-info-holder"><p class="card-name">' + data.name + '</p> <p class="card-rating">' + data.rating + '</p></div></div>';
+                    return '<div class="contact-card"><img class="card-avatar" src="' + data.img + '"><div class="card-info-holder"><p class="card-name">' + data.name + '</p> <p class="card-rating">' + data.street + '</p><p class="card-rating">' + data.city + '</p></div></div>';
                 }
 
             }

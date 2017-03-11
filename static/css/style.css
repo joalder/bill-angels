@@ -58,7 +58,7 @@ body, input, p, strong, span {
     padding: 3px;
     background-color: white;
     box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2);
-    width: 150px;
+    width: 170px;
 }
 
 .card-avatar {
@@ -73,12 +73,13 @@ body, input, p, strong, span {
 
 .card-name {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .card-rating {
-    font-size: 0.7em;
+    font-size: 0.6em;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .amount {
